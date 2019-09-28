@@ -1,17 +1,17 @@
 ERC20 compatible
-The FiatTokenV1 implements the ERC20 interface.
+The FiatTokenV1.sol implements the ERC20 interface.
 
-Pausable
+#Pausable
 The entire contract can be frozen, in case a serious bug is found or there is a serious key compromise. No transfers can take place while the contract is paused. Access to the pause functionality is controlled by the pauser address.
 
-Upgradable
+#Upgradable
 A new implementation contract can be deployed, and the proxy contract will forward calls to the new contract. Access to the upgrade functionality is guarded by a proxyOwner address. Only the proxyOwner address can change the proxyOwner address.
 
-Blacklist
+#Blacklist
 The contract can blacklist certain addresses which will prevent those addresses from transferring or receiving tokens. Access to the blacklist functionality is controlled by the blacklister address.
 
-Minting/Burning
+#Minting/Burning
 Tokens can be minted or burned on demand. The contract supports having multiple minters simultaneously. There is a masterMinter address which controls the list of minters and how much each is allowed to mint. The mint allowance is similar to the ERC20 allowance - as each minter mints new tokens their allowance decreases. When it gets too low they will need the allowance increased again by the masterMinter.
 
-Ownable
+#Ownable
 The contract has an Owner, who can change the owner, pauser, blacklister, or masterMinter addresses. The owner can not change the proxyOwner address.
